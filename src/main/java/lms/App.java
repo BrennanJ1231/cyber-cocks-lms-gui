@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 import java.io.IOException;
+import model.CourseApplication;
 import model.CourseList;
 
 /**
@@ -21,20 +22,20 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(loadFXML("home"), 640, 480);
         stage.setScene(scene);
         stage.show();
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {
-                CourseList.getInstance().logout();
+                CourseApplication.getInstance().logout();
                 Platform.exit();
                 System.exit(0);
             }
         });
     }
 
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 

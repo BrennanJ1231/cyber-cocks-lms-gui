@@ -16,6 +16,7 @@ public class CourseApplication{
     protected RegisteredUser regUser;
     private Admin admin;
     private Author author;
+    private static CourseApplication  courseApp = null;
 
     /**
      * Constructor for the CourseApplication class. creates course list and user list
@@ -23,6 +24,14 @@ public class CourseApplication{
      public CourseApplication() {
         this.courselist = CourseList.getInstance();
         this.userList = UserList.getInstance();
+    }
+
+    public static CourseApplication getInstance() {
+        if(courseApp == null)
+        {
+            courseApp = new CourseApplication();
+        }
+        return courseApp;
     }
 
      /**
